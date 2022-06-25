@@ -1,5 +1,8 @@
 package ru.yandex.praktikum;
 
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.Response;
 import org.junit.Before;
 import org.junit.Test;
@@ -33,6 +36,8 @@ public class OrderTests {
     }
 
     @Test
+    @DisplayName("Order creation")
+    @Severity(SeverityLevel.BLOCKER)
     public void orderCreationTest() {
         Response responseCreateOrder = createOrder(order);
         assertEquals(SC_CREATED, responseCreateOrder.statusCode());
@@ -40,6 +45,8 @@ public class OrderTests {
     }
 
     @Test
+    @DisplayName("Getting the list of all available orders")
+    @Severity(SeverityLevel.BLOCKER)
     public void getAllOrdersListTest() {
         Response responseGetAllOrdersList = getAllOrdersList();
         assertFalse(responseGetAllOrdersList.body().jsonPath().getList("orders").isEmpty());
