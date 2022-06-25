@@ -1,5 +1,8 @@
 package ru.yandex.praktikum;
 
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.Response;
 import org.junit.After;
 import org.junit.Before;
@@ -31,6 +34,8 @@ public class CourierCreationPositiveTest {
     }
 
     @Test
+    @DisplayName("Courier creation")
+    @Severity(SeverityLevel.BLOCKER)
     public void courierCreationTest() {
         Response responseCreate = createCourier(courier);
         assertEquals(responseCreate.statusCode(), SC_CREATED);
@@ -38,6 +43,8 @@ public class CourierCreationPositiveTest {
     }
 
     @Test
+    @DisplayName("Attempt to create the second courier with the same data")
+    @Severity(SeverityLevel.CRITICAL)
     public void courierDoubleCreationTest() {
         Response responseCreate = createCourier(courier);
         Response responseCreateTheSameLogin = createCourier(courier);

@@ -1,5 +1,8 @@
 package ru.yandex.praktikum;
 
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.Response;
 import org.junit.After;
 import org.junit.Before;
@@ -36,6 +39,7 @@ public class CourierLoginNegativeTest {
     }
 
     @Test
+    @DisplayName("Login for the courier with the incorrect login")
     public void courierWrongLoginTest() {
         courierCredentials.corruptLogin();
         Response responseLogin = login(courierCredentials);
@@ -44,6 +48,7 @@ public class CourierLoginNegativeTest {
     }
 
     @Test
+    @DisplayName("Login for the courier with the incorrect password")
     public void courierWrongPasswordTest() {
         courierCredentials.corruptPassword();
         Response responseLogin = login(courierCredentials);
@@ -52,6 +57,8 @@ public class CourierLoginNegativeTest {
     }
 
     @Test
+    @DisplayName("Login for the courier with the empty login")
+    @Severity(SeverityLevel.NORMAL)
     public void courierEmptyLoginTest() {
         courierCredentials.removeLogin();
         Response responseLogin = login(courierCredentials);
@@ -60,6 +67,8 @@ public class CourierLoginNegativeTest {
     }
 
     @Test
+    @DisplayName("Login for the courier with the empty password")
+    @Severity(SeverityLevel.NORMAL)
     public void courierEmptyPasswordTest() {
         courierCredentials.removePassword();
         Response responseLogin = login(courierCredentials);

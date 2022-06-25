@@ -1,5 +1,8 @@
 package ru.yandex.praktikum;
 
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.Response;
 import org.junit.Before;
 import org.junit.Test;
@@ -18,6 +21,8 @@ public class CourierCreationNegativeTest {
     }
 
     @Test
+    @DisplayName("Attempt to create a courier without password")
+    @Severity(SeverityLevel.MINOR)
     public void courierNoPasswordCreationAttemptTest() {
         courier.setPassword("");
         Response responseCreationAttempt = createCourier(courier);
@@ -26,6 +31,8 @@ public class CourierCreationNegativeTest {
     }
 
     @Test
+    @DisplayName("Attempt to create a courier without login")
+    @Severity(SeverityLevel.MINOR)
     public void courierNoLoginCreationAttemptTest() {
         courier.setLogin("");
         Response responseCreationAttempt = createCourier(courier);

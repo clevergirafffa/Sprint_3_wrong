@@ -1,5 +1,8 @@
 package ru.yandex.praktikum;
 
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.Response;
 import org.junit.After;
 import org.junit.Before;
@@ -31,6 +34,8 @@ public class CourierLoginPositiveTest {
     }
 
     @Test
+    @DisplayName("Login for the courier with the correct credentials")
+    @Severity(SeverityLevel.BLOCKER)
     public void courierLoginCorrectCredentialsTest() {
         CourierCredentials courierCredentials = new CourierCredentials(courier.getLogin(), courier.getPassword());
         Response responseLogin = login(courierCredentials);
