@@ -6,10 +6,26 @@ public class Courier {
 
     public Courier() {
         Faker faker = new Faker();
-        this.login = faker.name().lastName();
+        this.login = faker.name().lastName() + faker.lorem().characters(1);
         this.password = faker.lorem().characters(8);
         this.firstName = faker.name().firstName();
     }
+
+    public Courier(String login, String password, String firstName) {
+        this.login = login;
+        this.password = password;
+        this.firstName = firstName;
+    }
+
+    public Courier(String login, String firstName) {
+        this.login = login;
+        this.firstName = firstName;
+    }
+
+    /*public Courier(String firstName, String password) {
+        this.firstName = firstName;
+        this.password = password;
+    }*/
 
     public String getLogin() {
         return login;
